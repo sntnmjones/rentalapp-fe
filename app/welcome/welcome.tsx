@@ -1,10 +1,15 @@
+import { useEffect, useState } from "react";
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 
 export function Welcome() {
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
-      <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
+      <div>
+        Here
+        <Notes />
+      </div>
+      {/* <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <header className="flex flex-col items-center gap-9">
           <div className="w-[500px] max-w-[100vw] p-4">
             <img
@@ -25,6 +30,7 @@ export function Welcome() {
               What&apos;s next?
             </p>
             <ul>
+              
               {resources.map(({ href, text, icon }) => (
                 <li key={href}>
                   <a
@@ -41,10 +47,26 @@ export function Welcome() {
             </ul>
           </nav>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
+
+const Notes = () => {
+  let [notes, setNotes] = useState([])
+  useEffect(() => {
+      getNotes()
+    }, [])
+  let getNotes = async () => {
+      let response = await fetch('http://127.0.0.1:8000/')
+      let data = await response.json()  
+      setNotes(data)
+    }
+
+  return (
+    <div>Notes: {JSON.stringify(notes)}</div>
+  )
+  }
 
 const resources = [
   {
