@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import logoDark from "./logo-dark.svg";
-import logoLight from "./logo-light.svg";
 
-export function Welcome() {
+export function Home() {
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div>
